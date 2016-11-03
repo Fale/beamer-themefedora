@@ -1,0 +1,154 @@
+% vim:set tw=0:
+
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+%
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+%
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+\RequirePackage{graphics}
+\ProvidesPackage{fedora}
+
+% Font
+\usepackage{fontspec}
+\setsansfont{Droid Sans}
+\newfontfamily\comfortaa[]{Comfortaa}
+
+\mode<presentation> {
+
+    % color definitions
+    \setbeamercolor{structure}{fg=white}
+    \setbeamercolor*{normal text}{fg=white,bg={}}
+
+    % lists (itemize and enumerate)
+    \setbeamertemplate{enumerate items}[circle]
+    \setbeamertemplate{itemize items}[circle]
+
+    % background
+    \usebackgroundtemplate{
+        \includegraphics[width=\paperwidth,height=\paperheight]{background.png}
+    }
+
+    %%%%%%%%%%%%%%%%%%%%%
+    %%                 %%
+    %%   First Slide   %%
+    %%                 %%
+    %%%%%%%%%%%%%%%%%%%%%
+
+    \setbeamerfont{title}{size=\fontsize{35pt}{35pt},family=\comfortaa}
+    \setbeamerfont{subtitle}{size=\fontsize{8.5pt}{2pt},family=\comfortaa}
+
+    \setbeamertemplate{title page}
+    {
+        \begin{beamercolorbox}[ht=100pt,leftskip=320pt]{title}
+            \includegraphics[width=60pt]{fedora.png}
+        \end{beamercolorbox}
+        \begin{beamercolorbox}[ht=85pt,leftskip=0pt]{title}
+            \begin{flushright}
+                \usebeamerfont{title}\inserttitle
+            \end{flushright}
+        \end{beamercolorbox}
+        \begin{beamercolorbox}[ht=22pt,leftskip=90pt]{institute}
+            \normalbaselines\usebeamerfont{subtitle}\insertsubtitle
+        \end{beamercolorbox}
+        \nointerlineskip
+        \begin{beamercolorbox}[ht=12.2pt,leftskip=90pt]{institute}
+            \normalbaselines\usebeamerfont{subtitle}\insertauthor
+        \end{beamercolorbox}
+        \nointerlineskip
+        \begin{beamercolorbox}[ht=11.1pt,leftskip=90pt]{institute}
+            \normalbaselines\usebeamerfont{subtitle}\insertinstitute
+        \end{beamercolorbox}
+        \nointerlineskip
+        \begin{beamercolorbox}[ht=11.1pt,leftskip=90pt]{institute}
+            \normalbaselines\usebeamerfont{subtitle}\insertdate
+        \end{beamercolorbox}
+    }
+
+    \def\maketitle{
+        \begin{frame}[plain]
+            \titlepage
+        \end{frame}
+    }
+
+    %%%%%%%%%%%%%%%%%%%%%
+    %%                 %%
+    %%  Divider Slides %%
+    %%                 %%
+    %%%%%%%%%%%%%%%%%%%%%
+
+    \setbeamerfont{dividertitle}{size=\fontsize{30pt}{30pt},family=\comfortaa}
+
+    \AtBeginSection[]{
+        \begin{frame}[c,plain]
+            \begin{minipage}[c][\textheight][c]{\linewidth}
+                \centering\usebeamerfont{dividertitle}\secname
+            \end{minipage}
+        \end{frame}
+    }
+
+    %%%%%%%%%%%%%%%%%%%%%
+    %%                 %%
+    %%  Normal Slides  %%
+    %%                 %%
+    %%%%%%%%%%%%%%%%%%%%%
+
+    %
+    % Header
+    %
+
+    \setbeamerfont{frametitle}{size=\fontsize{17.5pt}{2pt},family=\comfortaa}
+    \setbeamerfont{framesubtitle}{size=\fontsize{8.9pt}{2pt}}
+
+    \setbeamertemplate{frametitle}
+    {
+        \begin{beamercolorbox}[ht=45pt,leftskip=6pt]{frametitle}
+            \usebeamerfont{frametitle}\insertframetitle
+        \end{beamercolorbox}
+        \begin{beamercolorbox}[ht=14pt,leftskip=6pt]{framesubtitle}
+            \usebeamerfont{framesubtitle}\insertframesubtitle
+        \end{beamercolorbox}
+    }
+
+    %
+    % Footer
+    %
+
+    \setbeamerfont{framefooter}{size=\fontsize{5.5pt}{2pt}}
+
+    % Make Beamer navigation disappear
+    \beamertemplatenavigationsymbolsempty
+
+    \setbeamercolor{footline}{fg=black}
+
+    \setbeamertemplate{footline}
+    {
+        \begin{picture}(0,0)(-412.5,-7.5)
+           \includegraphics[width=30pt]{fedora-long.png}
+        \end{picture}
+    }
+
+    %%%%%%%%%%%%%%%%%%%%%
+    %%                 %%
+    %%  Thanks Slide   %%
+    %%                 %%
+    %%%%%%%%%%%%%%%%%%%%%
+
+    \setbeamerfont{questions}{size=\fontsize{30pt}{30pt},family=\comfortaa}
+
+    \def\makethanks{
+        \begin{frame}[c,plain]
+            \begin{minipage}[c][\textheight][c]{\linewidth}
+                \centering\usebeamerfont{questions}Questions?
+            \end{minipage}
+        \end{frame}
+    }
+
+}
